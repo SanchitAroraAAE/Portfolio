@@ -442,7 +442,7 @@ body:not(.user-is-tabbing) a:focus {
 
 .work__box {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 @media(max-width: 900px) {
@@ -468,7 +468,8 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .work__text {
-    flex: 0 0 30%;
+    flex: 1;
+    max-width: 55%;
 }
 
 .work__list {
