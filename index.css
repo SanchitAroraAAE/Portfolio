@@ -612,3 +612,62 @@ body:not(.user-is-tabbing) a:focus {
         padding: var(--gutter-medium) 0;
     } 
 }
+
+
+/* --------------------------------------- */
+/* ----- Collapsible Project Gallery ----- */
+/* --------------------------------------- */
+
+.gallery-toggle {
+    background: none;
+    border: none;
+    color: var(--pink);
+    font-family: 'Jost', sans-serif;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.gallery-toggle .arrow {
+    transition: transform 0.3s ease;
+}
+
+.gallery-toggle[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+}
+
+.project-gallery-collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.project-gallery-collapsible.open {
+    max-height: 220px;
+    margin-top: 2rem;
+}
+
+.project-gallery-scroll {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+}
+
+.project-gallery-scroll img {
+    height: 180px;
+    flex-shrink: 0;
+    border: 1px solid rgb(36, 35, 35);
+    background: #0b0b0b;
+    padding: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.project-gallery-scroll img:hover {
+    transform: scale(1.05);
+}

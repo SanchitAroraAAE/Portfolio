@@ -41,3 +41,14 @@ window.addEventListener("scroll", () => {
     alterStyles(isBackToTopRendered);
   }
 });
+
+document.querySelectorAll('.gallery-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const gallery = button.nextElementSibling;
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+
+    button.setAttribute('aria-expanded', !expanded);
+    gallery.classList.toggle('open');
+  });
+});
+
