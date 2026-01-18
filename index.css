@@ -614,60 +614,69 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 
+
+
 /* --------------------------------------- */
-/* ----- Collapsible Project Gallery ----- */
+/* ----- Project Thumbnail Gallery ----- */
 /* --------------------------------------- */
 
-.gallery-toggle {
-    background: none;
-    border: none;
-    color: var(--pink);
-    font-family: 'Jost', sans-serif;
-    font-size: 1.6rem;
-    cursor: pointer;
-    padding: 0;
-    margin-top: 2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.gallery-toggle .arrow {
-    transition: transform 0.3s ease;
-}
-
-.gallery-toggle[aria-expanded="true"] .arrow {
-    transform: rotate(180deg);
-}
-
-.project-gallery-collapsible {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-}
-
-.project-gallery-collapsible.open {
-    max-height: 220px;
-    margin-top: 2rem;
-}
-
-.project-gallery-scroll {
+.project-gallery {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
     overflow-x: auto;
-    padding-bottom: 1rem;
-    scrollbar-width: thin;
+    padding-bottom: 0.5rem;
 }
 
-.project-gallery-scroll img {
-    height: 180px;
+.gallery-thumb {
+    height: 80px;
     flex-shrink: 0;
+    cursor: pointer;
     border: 1px solid rgb(36, 35, 35);
     background: #0b0b0b;
-    padding: 1rem;
-    transition: transform 0.2s ease;
+    padding: 0.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.project-gallery-scroll img:hover {
-    transform: scale(1.05);
+.gallery-thumb:hover {
+    transform: scale(1.08);
+    border-color: var(--pink);
+}
+
+/* --------------------------------------- */
+/* ----- Lightbox Overlay ----- */
+/* --------------------------------------- */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.lightbox::after {
+    content: "×";
+    position: absolute;
+    top: 3rem;
+    right: 4rem;
+    font-size: 4rem;
+    color: var(--white);
+    cursor: pointer;
 }

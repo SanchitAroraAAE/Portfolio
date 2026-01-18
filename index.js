@@ -42,13 +42,24 @@ window.addEventListener("scroll", () => {
   }
 });
 
-document.querySelectorAll('.gallery-toggle').forEach(button => {
-  button.addEventListener('click', () => {
-    const gallery = button.nextElementSibling;
-    const expanded = button.getAttribute('aria-expanded') === 'true';
+// Create lightbox element
+const lightbox = document.createElement('div');
+lightbox.classList.add('lightbox');
+document.body.appendChild(lightbox);
 
-    button.setAttribute('aria-expanded', !expanded);
-    gallery.classList.toggle('open');
+const lightboxImg = document.createElement('img');
+lightbox.appendChild(lightboxImg);
+
+// Open lightbox
+document.querySelectorAll('.gallery-thumb').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add('open');
   });
+});
+
+// Close on click
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('open');
 });
 
