@@ -42,24 +42,92 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Create lightbox element
+let currentIndex = 0;
+let currentGallery = [];
+
+/* ---------- Create lightbox elements ---------- */
+
 const lightbox = document.createElement('div');
-lightbox.classList.add('lightbox');
+lightbox.className = 'lightbox';
+
+const img = document.createElement('img');
+const caption = document.createElement('div');
+caption.className = 'lightbox-caption';
+
+const left = document.createElement('div');
+left.className = 'lightbox-arrow left';
+left.textContent = '‹';
+
+const right = document.createElement('div');
+right.className = 'lightbox-arrow right';
+right.textContent = '›';
+
+const close = document.createElement('div');
+close.className = 'lightbox-close';
+close.textContent = '×';
+
+lightbox.append(img, caption, left, right, close);
 document.body.appendChild(lightbox);
 
-const lightboxImg = document.createElement('img');
-lightbox.appendChild(lightboxImg);
 
-// Open lightbox
-document.querySelectorAll('.gallery-thumb').forEach(img => {
-  img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightbox.classList.add('open');
+/* ---------- Functions ---------- */
+
+function showImage(index) {
+  currentIndex = (index + currentGallery.length) % currentGallery.length;
+
+  const el = currentGallery[currentIndex];
+
+  img.src = el.src;
+  caption.textContent = el.alt; // caption from alt text
+}
+
+function openLightbox(gallery, index) {
+  currentGallery = gallery;
+  showImage(index);
+  lightbox.classList.add('open');
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+}
+
+
+/* ---------- Thumbnail clicks ---------- */
+
+document.querySelectorAll('.project-gallery').forEach(gallery => {
+  const images = Array.from(gallery.querySelectorAll('.gallery-thumb'));
+
+  images.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => openLightbox(images, i));
   });
 });
 
-// Close on click
-lightbox.addEventListener('click', () => {
-  lightbox.classList.remove('open');
-});
 
+/* ---------- Controls ---------- */
+
+left.onclick = (e) => {
+  e.stopPropagation();
+  showImage(currentIndex - 1);
+};
+
+right.onclick = (e) => {
+  e.stopPropagation();
+  showImage(currentIndex + 1);
+};
+
+close.onclick = closeLightbox;
+
+lightbox.onclick = (e) => {
+  if (e.target === lightbox) closeLightbox();
+};
+
+
+/* ---------- Keyboard support ---------- */
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+
+  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+  if (e.key === 'Escape') closeLightbox();
+});
