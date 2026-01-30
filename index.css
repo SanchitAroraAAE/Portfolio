@@ -159,6 +159,15 @@ h3 {
     margin-bottom: var(--gutter-small);
 }
 
+h3::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 6rem;
+    background: var(--pink);
+    margin-top: 1rem;
+}
+
 @media(max-width: 500px) {
     .heading-primary {
         font-size: var(--font-size-large);
@@ -414,6 +423,8 @@ body:not(.user-is-tabbing) a:focus {
 
     background-size: cover;
     background-position: center;
+    background-attachment: scroll;
+    text-align: center;
 
     font-size: var(--font-size-normal);
 }
@@ -436,18 +447,13 @@ body:not(.user-is-tabbing) a:focus {
     font-size: var(--font-size-medium);
 }
 
-@media (max-width: 900px){
+@media (hover: hover) and (min-width: 901px){
     .header{
-        background-attachment: scroll;
-        text-align: center;
+        background-attachment: fixed;
     }
 }
 
-@media(max-width: 500px) {
-    .header {
-        text-align: center;
-    }
-
+@media (max-width: 500px) {
     .header__text p {
         transform: scale(.8);
     }
@@ -460,6 +466,7 @@ body:not(.user-is-tabbing) a:focus {
 .work__box {
     display: flex;
     align-items: flex-start;
+    gap: 3rem;
 }
 
 @media(max-width: 900px) {
@@ -487,6 +494,12 @@ body:not(.user-is-tabbing) a:focus {
 .work__text {
     flex: 1;
     max-width: 55%;
+}
+
+@media (max-width: 900px){
+    .work__text{
+        max-width: 100%;
+    }
 }
 
 .work__list {
