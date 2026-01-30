@@ -407,15 +407,17 @@ body:not(.user-is-tabbing) a:focus {
     background: linear-gradient(rgba(0,0,0, .1), rgba(0,0,0, .4)), 
         url('./images/PurdueSunset.jpg');
     min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     background-size: cover;
     background-position: center;
     font-size: var(--font-size-normal);
 }
 
 .header__text {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    transform: none;
 }
 
 .header__text p {
