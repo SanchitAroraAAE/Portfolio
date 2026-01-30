@@ -493,16 +493,6 @@ body:not(.user-is-tabbing) a:focus {
     margin-bottom: var(--gutter-normal);
 }
 
-/* caption */
-.work__image-box-caption {
-    position: absolute;
-    bottom: 4rem;
-    color: var(--white);
-    font-size: 2rem;
-    text-align: center;
-    max-width: 80%;
-}
-
 @media(min-width: 901px) {
     .work__image-box {
         flex: 1;
