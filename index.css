@@ -490,8 +490,22 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .work__image-box {
-    margin-bottom: var(--gutter-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.work__image-label {
+    border-top: 1px solid rgb(36, 35, 35);
+    padding-top: 1rem;
+    margin-top: 1.2rem;
+    font-size: 1.4rem;
+    color: var(--white-1);
+    text-align: center;
+    max-width: 90%;
+    line-height: 1.4;
+}
+
 
 @media(min-width: 901px) {
     .work__image-box {
@@ -504,6 +518,16 @@ body:not(.user-is-tabbing) a:focus {
     .work__code {
         height: 4rem;
     }
+}
+
+/* caption */
+.work__image-box {
+    position: absolute;
+    bottom: 4rem;
+    color: var(--white);
+    font-size: 2rem;
+    text-align: center;
+    max-width: 80%;
 }
 
 /* --------------------------------------- */
@@ -678,8 +702,8 @@ body:not(.user-is-tabbing) a:focus {
 .lightbox-caption {
     position: absolute;
     bottom: 4rem;
-    color: var(--white-1);
-    font-size: 1.6rem;
+    color: var(--white);
+    font-size: 2rem;
     text-align: center;
     max-width: 80%;
 }
