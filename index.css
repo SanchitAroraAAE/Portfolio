@@ -490,22 +490,18 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .work__image-box {
-    width: 100%;
-    height: auto;
-    display: block;
+    margin-bottom: var(--gutter-normal);
 }
 
-.work__image-label {
-    border-top: 1px solid rgb(36, 35, 35);
-    padding-top: 1rem;
-    margin-top: 1.2rem;
-    font-size: 1.4rem;
-    color: var(--white-1);
+/* caption */
+.work__image-box-caption {
+    position: absolute;
+    bottom: 4rem;
+    color: var(--white);
+    font-size: 2rem;
     text-align: center;
-    max-width: 90%;
-    line-height: 1.4;
+    max-width: 80%;
 }
-
 
 @media(min-width: 901px) {
     .work__image-box {
