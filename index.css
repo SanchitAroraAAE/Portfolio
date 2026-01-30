@@ -424,7 +424,7 @@ body:not(.user-is-tabbing) a:focus {
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
-    text-align: center;
+    text-align: left;
 
     font-size: var(--font-size-normal);
 }
@@ -447,9 +447,10 @@ body:not(.user-is-tabbing) a:focus {
     font-size: var(--font-size-medium);
 }
 
-@media (hover: hover) and (min-width: 901px){
+@media (hover: hover) and (max-width: 900px){
     .header{
         background-attachment: fixed;
+        text-align: center;
     }
 }
 
