@@ -493,6 +493,30 @@ body:not(.user-is-tabbing) a:focus {
     margin-bottom: var(--gutter-normal);
 }
 
+/* caption */
+.work__image-label {
+    margin-top: 1.2rem;
+    font-size: 1.4rem;
+    color: var(--white-1);
+    text-align: center;
+    position: relative;
+    padding-top: 1.2rem;
+    opacity: 0.9;
+}
+
+/* the small bar */
+.work__image-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;          /* length of bar */
+    height: 2px;          /* thickness */
+    background: var(--pink); /* accent color */
+    border-radius: 2px;
+}
+
 @media(min-width: 901px) {
     .work__image-box {
         flex: 1;
