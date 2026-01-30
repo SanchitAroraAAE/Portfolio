@@ -406,10 +406,9 @@ body:not(.user-is-tabbing) a:focus {
 .header {
     background: linear-gradient(rgba(0,0,0, .1), rgba(0,0,0, .4)), 
         url('./images/PurdueSunset.jpg');
-    height: 100vh;
+    min-height: 100svh;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     font-size: var(--font-size-normal);
 }
 
@@ -424,6 +423,13 @@ body:not(.user-is-tabbing) a:focus {
     max-width: var(--container-medium-width);
     font-family: 'Jost', sans-serif;
     font-size: var(--font-size-medium);
+}
+
+@media (max-width: 900px){
+    .header{
+        background-attachment: scroll;
+        text-align: center;
+    }
 }
 
 @media(max-width: 500px) {
@@ -448,7 +454,7 @@ body:not(.user-is-tabbing) a:focus {
 @media(max-width: 900px) {
     .work__box {
         align-items: initial;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 }
 
