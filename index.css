@@ -406,13 +406,22 @@ body:not(.user-is-tabbing) a:focus {
 .header {
     background: linear-gradient(rgba(0,0,0, .1), rgba(0,0,0, .4)), 
         url('./images/PurdueSunset.jpg');
+
     min-height: 100svh;
+
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+
     background-size: cover;
     background-position: center;
+
     font-size: var(--font-size-normal);
+}
+
+.header__text-box{
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .header__text {
@@ -498,7 +507,11 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .work__image-box {
-    margin-bottom: var(--gutter-normal);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
 }
 
 /* caption */
