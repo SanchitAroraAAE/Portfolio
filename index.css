@@ -433,6 +433,7 @@ body:not(.user-is-tabbing) a:focus {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding-left: var(--gutter-medium);
 }
 
 .header__text {
