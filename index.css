@@ -432,7 +432,8 @@ body:not(.user-is-tabbing) a:focus {
 .header__text-box{
     flex: 1;
     display: flex;
-    align-items: left;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .header__text {
@@ -451,7 +452,6 @@ body:not(.user-is-tabbing) a:focus {
 @media (hover: hover) and (min-width: 901px){
     .header{
         background-attachment: fixed;
-        text-align: center;
     }
 }
 
