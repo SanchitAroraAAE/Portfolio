@@ -438,6 +438,7 @@ body:not(.user-is-tabbing) a:focus {
 .header__text {
     position: static;
     transform: none;
+    text-align: left;
 }
 
 .header__text p {
@@ -447,7 +448,7 @@ body:not(.user-is-tabbing) a:focus {
     font-size: var(--font-size-medium);
 }
 
-@media (hover: hover) and (max-width: 900px){
+@media (hover: hover) and (min-width: 901px){
     .header{
         background-attachment: fixed;
         text-align: center;
