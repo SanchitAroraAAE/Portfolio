@@ -131,3 +131,39 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
   if (e.key === 'Escape') closeLightbox();
 });
+
+/* =====================================
+   Fade-in sections
+===================================== */
+
+const faders = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle('visible', entry.isIntersecting);
+  });
+}, {
+  threshold: 0,                 // 👈 KEY FIX
+  rootMargin: "0px 0px -20% 0px" // optional nicer timing
+});
+
+faders.forEach(el => observer.observe(el));
+
+
+
+/* =====================================
+   Sidebar show after header scroll
+===================================== */
+
+const hero = document.querySelector('.header'); // your hero is .header
+const sidebar = document.getElementById('profileSidebar');
+
+if (sidebar && hero) {
+  const heroWatcher = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      sidebar.classList.toggle('visible', !entry.isIntersecting);
+    });
+  }, { threshold: 0.2});
+
+  heroWatcher.observe(hero);
+}
