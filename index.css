@@ -35,7 +35,7 @@
     --line-height-small: 1.2;
 
     --black: #000;
-    --pink: #ff3258;
+    --red: #d60000;
     --white: #f0e9f2;
     --white-1: #e5e5e6da;
 
@@ -122,6 +122,10 @@ img {
 h1,
 h2,
 h3 {
+    display: inline-block;
+    padding-bottom: 0.6rem;
+    border-bottom: 3px solid var(--red);
+    border-radius: 2px;
     font-family: 'Jost', sans-serif;
     font-weight: 400;
     line-height: var(--line-height-small);
@@ -145,27 +149,9 @@ h2 {
     margin-bottom: var(--gutter-medium);
 }
 
-h2::after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 10rem;
-    background: var(--pink);
-    margin: var(--gutter-small) 0;
-}
-
 h3 {
     font-size: var(--font-size-medium-1);
     margin-bottom: var(--gutter-small);
-}
-
-h3::after {
-    content: '';
-    display: block;
-    height: 3px;
-    width: 6rem;
-    background: var(--pink);
-    margin-top: 1rem;
 }
 
 @media(max-width: 500px) {
@@ -210,7 +196,7 @@ a {
 
 button:focus,
 a:focus {
-    outline: 2px solid var(--pink);
+    outline: 2px solid var(--red);
 }
 
 body:not(.user-is-tabbing) button:focus,
@@ -219,7 +205,7 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .link:hover {
-    color: var(--pink);
+    color: var(--red);
 }
 
 .btn {
@@ -228,7 +214,7 @@ body:not(.user-is-tabbing) a:focus {
     padding: 1rem 4.2rem;
     text-decoration: none;
     color: inherit;
-    border: 1px solid  var(--pink);
+    border: 1px solid  var(--red);
     font-weight: 400;
 }
 
@@ -252,21 +238,38 @@ body:not(.user-is-tabbing) a:focus {
 .btn:hover::after,
 .btn:focus::after {
     right: 0;
-    background: var(--pink);
+    background: var(--red);
 }
 
-.btn--pink {
-    background: var(--pink);
-    transition: all 0.2s;
+.btn--red {
+    background: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+    overflow: hidden;
 }
 
-.btn--pink::after {
-    display: none;
+.btn--red::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    background: var(--red);
+
+    right: 0;                /* fully visible */
+    z-index: -1;
+
+    transition: all 0.35s cubic-bezier(.16,1,.3,1);
 }
 
-.btn--pink:hover,
-.btn--pink:focus {
+.btn--red:hover::after,
+.btn--red:focus::after {
+    right: 100%;
+}
+
+.btn--red:hover,
+.btn--red:focus {
     background: transparent;
+    color: var(--red);
 }
 
 .link__text {
@@ -275,7 +278,7 @@ body:not(.user-is-tabbing) a:focus {
     padding: .6rem;
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid var(--pink);
+    border-bottom: 1px solid var(--red);
 }
 
 .link__text::after {
@@ -298,7 +301,7 @@ body:not(.user-is-tabbing) a:focus {
 .link__text:hover::after,
 .link__text:focus:after {
     right: 0;
-    background: var(--pink);
+    background: var(--red);
 }
 
 .link__text span {
@@ -317,7 +320,7 @@ body:not(.user-is-tabbing) a:focus {
     align-items: center;
     height: 5.5rem;
     width: 5.5rem;
-    background-color: var(--pink);
+    background-color: var(--red);
     border-radius: 50%;
     z-index: 10;
     visibility: hidden;
@@ -384,6 +387,7 @@ body:not(.user-is-tabbing) a:focus {
     text-decoration: none;
     color: inherit;
     transition: all .2s;
+    color: var(--white);
 }
 
 .nav__link::after {
@@ -394,18 +398,18 @@ body:not(.user-is-tabbing) a:focus {
     right: 100%;
     display: inline-block;
     height: 1rem;
-    background: var(--white);
+    background: var(--red);
     transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.9);
 }
 
 .nav__link:hover {
-    color: var(--pink);
+    color: var(--red);
 }
 
 .nav__link:hover::after {
     right: 0;
     height: 2px;
-    background: var(--pink);
+    background: var(--red);
 }
 
 /* --------------------------------------- */
@@ -426,6 +430,8 @@ body:not(.user-is-tabbing) a:focus {
     background-attachment: scroll;
 
     font-size: var(--font-size-normal);
+
+    padding-left: 320px;
 }
 
 .header__text-box{
@@ -470,6 +476,12 @@ body:not(.user-is-tabbing) a:focus {
 @media (max-width: 500px) {
     .header__text p {
         transform: scale(.8);
+    }
+}
+
+@media (max-width: 900px) {
+    .header {
+        padding-left: 0;
     }
 }
 
@@ -543,6 +555,10 @@ body:not(.user-is-tabbing) a:focus {
 
 /* caption */
 .work__image-label {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--red);
+    border-radius: 2px;
     margin-top: 1.2rem;
     font-size: 1.4rem;
     color: var(--white);
@@ -550,19 +566,6 @@ body:not(.user-is-tabbing) a:focus {
     position: relative;
     padding-top: 1.2rem;
     opacity: 0.9;
-}
-
-/* the small bar */
-.work__image-label::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;          /* length of bar */
-    height: 2px;          /* thickness */
-    background: var(--pink); /* accent color */
-    border-radius: 2px;
 }
 
 @media(min-width: 901px) {
@@ -649,15 +652,25 @@ body:not(.user-is-tabbing) a:focus {
 /* --------------------------------------- */
 
 .footer {
-    text-align: center;
+    text-align: left;
     padding: var(--gutter-medium) 0 var(--gutter-normal);
 }
 
 .footer__social-links {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     padding: var(--gutter-normal) 0;
     list-style: none;
+}
+
+.contact .footer {
+  padding: 1.5rem 0 0 0;
+}
+
+.contact .footer__social-links {
+  padding: 0;
+  margin-top: 1.5rem;
+  gap: 1.8rem;
 }
 
 .footer__social-link-item:not(:last-of-type) {
@@ -665,7 +678,13 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .footer__social-image {
-    height: 4rem;
+    height: 5.5rem;
+    transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.9);
+}
+
+.footer__social-link-item:hover .footer__social-image {
+  transform: translateY(-10px);
+  opacity: 0.85;
 }
 
 .footer__github-buttons {
@@ -713,7 +732,7 @@ body:not(.user-is-tabbing) a:focus {
 
 .gallery-thumb:hover {
     transform: scale(1.08);
-    border-color: var(--pink);
+    border-color: var(--red);
 }
 
 /* --------------------------------------- */
@@ -859,6 +878,8 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .profile-edu {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   font-size: 1.75rem;
   color: #ffffff;
   line-height: 1.4;
