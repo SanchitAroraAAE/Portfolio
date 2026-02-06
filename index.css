@@ -934,3 +934,107 @@ body:not(.user-is-tabbing) a:focus {
   transform: translateY(-5%) translateX(0) scale(1.02);
 }
 
+
+/* ============================= */
+/* Education (timeline style) */
+/* ============================= */
+
+.education {
+  margin-top: none;
+}
+
+.edu-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+.edu-logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.edu-content {
+  max-width: 800px;
+}
+
+.edu-date {
+  font-size: 1.4rem;
+  color: #aaa;
+  display: block;
+  margin-bottom: .6rem;
+}
+
+.edu-school {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.edu-degree {
+  font-size: 1.6rem;
+  color: #ddd;
+  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.edu-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* mobile stack */
+@media (max-width: 700px) {
+  .edu-item {
+    flex-direction: column;
+  }
+
+  .edu-logo {
+    width: 60px;
+  }
+}
+
+/* ---------- Tools ---------- */
+
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 700px;
+}
+
+/* ---------- Logo system ---------- */
+
+.logo {
+  display: flex;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* sizes */
+.logo--sm { height: 28px; }
+.logo--md { height: 60px; }
+.logo--lg { height: 64px; }
+
+/* inside cards */
+.logo-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* tools grid logos */
+.tool-logo {
+  height: 80;
+  width: 80px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #222;
+  background: #111;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+
