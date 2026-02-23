@@ -155,16 +155,16 @@ faders.forEach(el => observer.observe(el));
    Sidebar show after header scroll
 ===================================== */
 
-const hero = document.querySelector('.header'); // your hero is .header
+const hero = document.querySelector('.header');
 const sidebar = document.getElementById('profileSidebar');
-const header = document.querySelector('.header')
 
-window.addEventListener("scroll", () => {
-  const headerBottom = header.offsetHeight;
+if (sidebar && hero) {
+  const heroWatcher = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      // Show sidebar only when header is completely out of view
+      sidebar.classList.toggle('visible', entry.intersectionRatio === 0);
+    });
+  }, { threshold: 0 });
 
-  if (window.scrollY > headerBottom - 200) {
-    sidebar.classList.add("visible");
-  } else {
-    sidebar.classList.remove("visible");
-  }
-});
+  heroWatcher.observe(hero);
+}
