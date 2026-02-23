@@ -157,13 +157,14 @@ faders.forEach(el => observer.observe(el));
 
 const hero = document.querySelector('.header'); // your hero is .header
 const sidebar = document.getElementById('profileSidebar');
+const header = document.querySelector('.header')
 
-if (sidebar && hero) {
-  const heroWatcher = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      sidebar.classList.toggle('visible', !entry.isIntersecting);
-    });
-  }, { threshold: 0.2});
+window.addEventListener("scroll", () => {
+  const headerBottom = header.offsetHeight;
 
-  heroWatcher.observe(hero);
-}
+  if (window.scrollY > headerBottom - 200) {
+    sidebar.classList.add("visible");
+  } else {
+    sidebar.classList.remove("visible");
+  }
+});
