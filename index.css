@@ -906,7 +906,7 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 /* hide on mobile */
-@media (max-width: 1000px) {
+@media (hover: none) and (pointer: coarse) {
   .profile-sidebar {
     display: none !important;
   }

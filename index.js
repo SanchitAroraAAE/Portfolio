@@ -159,12 +159,17 @@ const hero = document.querySelector('.header');
 const sidebar = document.getElementById('profileSidebar');
 
 if (sidebar && hero) {
-  const heroWatcher = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      // Show sidebar only when header is completely out of view
-      sidebar.classList.toggle('visible', entry.intersectionRatio === 0);
-    });
-  }, { threshold: 0 });
+  function toggleSidebar() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
 
-  heroWatcher.observe(hero);
+    // Show only after header fully leaves viewport
+    if (heroBottom <= 0) {
+      sidebar.classList.add('visible');
+    } else {
+      sidebar.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', toggleSidebar);
+  window.addEventListener('load', toggleSidebar);
 }
